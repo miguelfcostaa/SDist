@@ -1,2 +1,2 @@
-# SDist
-Sistemas
+# SD
+Sistemas Distribuidos
