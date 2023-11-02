@@ -15,7 +15,7 @@ jobs:
           password: dckr_pat_ExoRzjrL2xMzK5368c0tA9VaE3k
 
       - name: Build Docker image
-        run: docker build -t miguelfcosta/imagem123 .
+        run: docker build -t projetoSDist .
 
       - name: Push Docker image to Docker Hub
-        run: docker push miguelfcosta/imagem123
+        run: docker push projetoSDist
