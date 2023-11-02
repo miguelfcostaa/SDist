@@ -12,10 +12,10 @@ jobs:
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.miguelfcosta }}
-          password: ${{ secrets.4nmkHGNa88 }}
+          password: ${{ secrets.dckr_pat_ExoRzjrL2xMzK5368c0tA9VaE3k }}
 
       - name: Build Docker image
-        run: docker build -t projeto_sdist .
+        run: docker build -t projeto-sdist .
 
       - name: Push Docker image to Docker Hub
-        run: docker push projeto_sdist
+        run: docker push projeto-sdist
