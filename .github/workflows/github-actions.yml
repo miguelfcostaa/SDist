@@ -14,6 +14,7 @@ jobs:
           username: ${{ secrets.miguelfcosta }}
           password: ${{ secrets.dckr_pat_ExoRzjrL2xMzK5368c0tA9VaE3k }}
 
+          
       - name: Build Docker image
         run: docker build -t projeto-sdist .
 
