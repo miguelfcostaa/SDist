@@ -15,7 +15,7 @@ jobs:
           password: dckr_pat_ExoRzjrL2xMzK5368c0tA9VaE3k
 
       - name: Build Docker image
-        run: docker build -t projetoSDist .
+        run: docker build -t projeto_sdist .
 
       - name: Push Docker image to Docker Hub
-        run: docker push projetoSDist
+        run: docker push projeto_sdist
