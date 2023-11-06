@@ -16,7 +16,7 @@ jobs:
 
 
       - name: Build Docker image
-        run: docker build -t miguelfcosta/projeto-sdist .
+        run: docker build -t rodrigobarradas/projeto-sdist .
 
       - name: Push Docker image to Docker Hub
-        run: docker push miguelfcosta/projeto-sdist
+        run: docker push rodrigobarradas/projeto-sdist
