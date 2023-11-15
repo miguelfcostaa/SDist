@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: user-deployment
 spec:
-  replicas: 3 # Número desejado de réplicas
+  replicas: 1 
   selector:
     matchLabels:
       app: projeto-sd
