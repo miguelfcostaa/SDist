@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-deployment
+spec:
+  replicas: 3 # Número desejado de réplicas
+  selector:
+    matchLabels:
+      app: projeto-sd
+  template:
+    metadata:
+      labels:
+        app: projeto-sd
+    spec:
+      containers:
+      - name: temp-container
+        image: miguelfcosta/projeto-sdist:latest 
+        ports:
+        - containerPort: 8080 
