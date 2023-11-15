@@ -30,7 +30,10 @@ jobs:
       
       - name: Set up kubectl
         uses: azure/setup-kubectl@v1
-        
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          context: cluster-context
+          host: https://10.2.15.146:6443  # Replace with the correct API server port
       
       - name: Apply Kubernetes manifests
         run: kubectl apply -f yaml/
