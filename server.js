@@ -7,7 +7,7 @@ const path = require('path');
 
 app.use(express.json());
 
-app.use('/api', routes);
+app.use('/', routes);
 
 app.use(express.static('public'));
 

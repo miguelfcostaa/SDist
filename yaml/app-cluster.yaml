@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-cluster
+  namespace: default
+spec:
+  destination:
+    server: 10.2.15.146   # Substitua pelo endereço IP do seu cluster Kubernetes
+    namespace: default
+  project: default
+  source:
+    path: .   # Caminho para os arquivos de configuração do Kubernetes no seu repositório
+    repoURL: https://github.com/miguelfcostaa/SDist.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}

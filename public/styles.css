@@ -61,3 +61,26 @@ button {
 button:hover {
     background: #0056b3;
 }
+
+
+.goBackBtnL {
+    position: absolute;
+    top: 230px;
+    left: 620px;
+}
+
+
+.goBackBtnL:hover {
+    cursor: pointer;
+}
+
+.goBackBtnR {
+    position: absolute;
+    top: 220px;
+    left: 660px;
+}
+
+
+.goBackBtnR:hover {
+    cursor: pointer;
+}
