@@ -5,12 +5,17 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    server: 10.2.15.146   # Substitua pelo endereço IP do seu cluster Kubernetes
-    namespace: default
+    server: 'https://kubernetes.docker.internal:6443'
+    namespace: sge
   project: default
   source:
-    path: /yaml  # Caminho para os arquivos de configuração do Kubernetes no seu repositório
-    repoURL: https://github.com/miguelfcostaa/SDist.git
-    targetRevision: HEAD
-  syncPolicy:
-    automated: {}
+  repoURL: 'https://github.com/miguelfcostaa/SDist'
+  path: yaml
+  targetRevision: HEAD
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
+    - FailOnSharedResource=true
