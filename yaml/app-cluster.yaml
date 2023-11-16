@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: user-deployment
-  namespace: default
+  namespace: argocd
 spec:
   destination:
     server: 10.2.15.146   # Substitua pelo endereço IP do seu cluster Kubernetes
