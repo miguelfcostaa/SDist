@@ -28,6 +28,17 @@ body {
     text-align: center;
 }
 
+.profile-container{
+    max-width: 400px;
+    min-width: 400px;
+    min-height: 400px;
+    background: #FFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
@@ -117,4 +128,10 @@ button:hover {
 
 .ProfileBtnM:hover {
     cursor: pointer;
+}
+
+.goBackBtnP {
+    position: absolute;
+    top: 170px;
+    left: 600px;
 }
