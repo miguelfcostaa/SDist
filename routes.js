@@ -26,6 +26,7 @@ router.post('/register', async (req, res) => {
   }
 
   const result = await db.collection('users').insertOne({ username, password });
+  return res.sendFile(path.join(__dirname, 'public', 'menu.html'));
   //res.status(201).json({ message: 'User created', userId: result.insertedId });
 });
 
