@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  mongodb:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    ports:  
+      - 27017:27017
+    volumes:
+      - mongo_db:/data/db
+
+  nodejs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      PORT: 8080
+      MONGODB_URL: mongodb://localhost:27017
+      DB_NAME: my_db
+      NAME: Mongo Database
+    depends_on:
+      - mongodb
+
+volumes:
+  mongo_db: {}
