@@ -6,7 +6,7 @@ services:
     image: mongo:latest
     restart: always
     ports:  
-      - 27017:27017
+      - 2717:27017
     volumes:
       - mongo_db:/data/db
 
@@ -19,8 +19,8 @@ services:
       - 8080:8080
     environment:
       PORT: 8080
-      MONGODB_URL: mongodb://mongo_db:27017
-      DB_NAME: my_db
+      MONGODB_URL: mongodb+srv://miguelfcosta88:miguel1234@sdistdb.sbvckky.mongodb.net/
+      DB_NAME: sdist_db
       NAME: Application
     depends_on:
       - mongo_db

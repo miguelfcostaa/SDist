@@ -15,6 +15,12 @@ router.get('/register', (req, res) => {
 });
 
 
+router.get('/menu', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'menu.html'));
+});
+
+
+
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
   const db = req.db;
@@ -26,7 +32,7 @@ router.post('/register', async (req, res) => {
   }
 
   await db.collection('users').insertOne({ username, password });
-  return res.sendFile(path.join(__dirname, 'public', 'menu.html'));
+  return res.redirect('/menu');
   //res.status(201).json({ message: 'User created', userId: result.insertedId });
 });
 
@@ -44,7 +50,7 @@ router.post('/login', async (req, res) => {
   }
 
   //res.json({ message: 'Login successful', user });
-  return res.sendFile(path.join(__dirname, 'public', 'menu.html'));
+  return res.redirect('/menu');
 });
 
 

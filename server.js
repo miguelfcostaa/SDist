@@ -9,8 +9,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
-const mongoUrl = process.env.MONGODB_URL || 'mongodb://localhost:27017';
-const dbName = process.env.DB_NAME || 'my_db';
+const mongoUrl = process.env.MONGODB_URL || 'mongodb+srv://miguelfcosta88:miguel1234@sdistdb.sbvckky.mongodb.net/';
+const dbName = process.env.DB_NAME || 'sdist_db';
 
 MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((client) => {
