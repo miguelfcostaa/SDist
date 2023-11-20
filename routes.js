@@ -19,7 +19,7 @@ router.get('/menu', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'menu.html'));
 });
 
-router.get('/menu/profile', (req, res) => {
+router.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'profile.html'));
 });
 
