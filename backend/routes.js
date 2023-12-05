@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
   const user = await db.collection('users').findOne({ username, password });
 
   if (!user) {
-    return res.status(401).json({ message: 'Invalid credentials' });
+    return res.status(401).json({ message: 'Invalid credentials :)' });
   }
 
   // If login is successful, send a JSON message to another service
