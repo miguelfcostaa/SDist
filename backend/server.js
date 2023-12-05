@@ -6,11 +6,14 @@ const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 
+
 app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
+
 const mongoUrl = process.env.MONGODB_URL || 'mongodb+srv://miguelfcosta88:miguel1234@sdistdb.sbvckky.mongodb.net/';
 const dbName = process.env.DB_NAME || 'sdist_db';
+
 
 MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((client) => {

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const axios = require('axios');
 
 router.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -52,8 +53,21 @@ router.post('/login', async (req, res) => {
     return res.status(401).json({ message: 'Invalid credentials' });
   }
 
-  //res.json({ message: 'Login successful', user });
-  return res.redirect('/menu');
+  // If login is successful, send a JSON message to another service
+  try {
+    await axios.post('http://other-service-url/api/login', {
+      username: user.username,
+      // Include any other relevant user information
+    });
+
+    // If the request is successful, you can handle the response or send a success message
+    return res.redirect('/menu');
+  } 
+  catch (error) {
+    // Handle the error if the request to the other service fails
+    console.error('Error sending JSON message to other service:', error.message);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
 
