@@ -5,9 +5,9 @@ metadata:
   namespace: sge
 spec:
   selector:
-    app: projeto-sd
+    app: projeto-sd-backend
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8080 
-  type: LoadBalancer 
+  type: ClusterIP
