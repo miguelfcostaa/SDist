@@ -14,10 +14,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-
-      - name: Build Docker image
-        run: docker build -t miguelfcosta/projeto-sdist .
-
-      - name: Push Docker image to Docker Hub
-        run: docker push miguelfcosta/projeto-sdist
-
+      - name: Build Backend Docker image
+        run: docker build -t miguelfcosta/projeto-sdist-backend ./backend
+  
+      - name: Build Frontend Docker image
+        run: docker build -t miguelfcosta/projeto-sdist-frontend ./frontend
+  
+      - name: Push Backend Docker image to Docker Hub
+        run: docker push miguelfcosta/projeto-sdist-backend
+  
+      - name: Push Frontend Docker image to Docker Hub
+        run: docker push miguelfcosta/projeto-sdist-frontend
