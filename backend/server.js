@@ -16,9 +16,12 @@ const dbName = process.env.DB_NAME || 'sdist_db';
 
 
 MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+
   .then((client) => {
+
     const db = client.db(dbName);
     console.log(`\nDatabase connected!`);
+    
     // Configurações CORS para permitir acesso de qualquer origem (não seguro para produção)
     app.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*'); // Permitir acesso de qualquer origem
@@ -26,7 +29,6 @@ MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true 
       res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'); // Cabeçalhos permitidos
       next();
     });
-
 
     // Pass the MongoDB database connection to the routes
     app.use((req, res, next) => {

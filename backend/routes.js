@@ -55,9 +55,9 @@ router.post('/login', async (req, res) => {
 
   // If login is successful, send a JSON message to another service
   try {
-    const response = await axios.post('http://other-service-url/api/login', {
+    const response = await axios.post('http://login-backend-service/login', {
       username: user.username,
-      // Include any other relevant user information
+      password: user.password,
     });
 
     if (response.status === 200) {
