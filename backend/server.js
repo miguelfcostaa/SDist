@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const routes = require('./routes');
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 const path = require('path'); 
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
@@ -43,7 +43,7 @@ MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true 
     
 
     app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}/home`);
+      console.log(`Server is running on http://localhost:${port}`);
     });
   })
   .catch((err) => {

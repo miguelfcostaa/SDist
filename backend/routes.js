@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 const axios = require('axios');
 
-router.get('/home', (req, res) => {
+router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
@@ -19,6 +19,18 @@ router.get('/login-sucess', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'menu.html'));
 });
 
+router.get('/login-fail', (req, res) => {
+  res.status(409).json({ message: 'Invalid credentials.' });
+});
+
+router.get('/create-sucess', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'menu.html'));
+});
+
+router.get('/create-fail', (req, res) => {
+  res.status(409).json({ message: 'User already exists.' });
+});
+
 router.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'profile.html'));
 });
@@ -31,11 +43,10 @@ router.post('/create-account', async (req, res) => {
   const existingUser = await db.collection('users').findOne({ username });
 
   if (existingUser) {
-    res.status(409).json({ message: 'User already exists' });
     return res.redirect('/create-fail');
   }
 
-  await db.collection('users').insertOne({ username, password });
+  await db.collection('users').insertOne({ username, password });2
   return res.redirect('/create-sucess');
   //res.status(201).json({ message: 'User created', userId: result.insertedId });
 });
@@ -49,7 +60,6 @@ router.post('/login', async (req, res) => {
   const user = await db.collection('users').findOne({ username, password });
 
   if (!user) {
-    res.status(401).json({ message: 'Invalid credentials :)' });
     return res.redirect('/login-fail');
   }
 
