@@ -1,51 +1,31 @@
 const express = require('express');
+const path = require('path');
+const axios = require('axios');
+const cors = require('cors'); 
+
 const app = express();
-const routes = require('./routes');
 const port = process.env.PORT || 3000;
-const path = require('path'); 
-const MongoClient = require('mongodb').MongoClient;
-const bodyParser = require('body-parser');
+
+app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use(bodyParser.json()); // Parse JSON bodies
-app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 
-const mongoUrl = process.env.MONGODB_URL || 'mongodb+srv://miguelfcosta88:miguel1234@sdistdb.sbvckky.mongodb.net/';
-const dbName = process.env.DB_NAME || 'sdist_db';
+app.get('/create-account', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'register.html'));
+});
 
 
-MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
 
-  .then((client) => {
 
-    const db = client.db(dbName);
-    console.log(`\nDatabase connected!`);
-    
-    // Configurações CORS para permitir acesso de qualquer origem (não seguro para produção)
-    app.use((req, res, next) => {
-      res.header('Access-Control-Allow-Origin', '*'); // Permitir acesso de qualquer origem
-      res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Métodos permitidos
-      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'); // Cabeçalhos permitidos
-      next();
-    });
-
-    // Pass the MongoDB database connection to the routes
-    app.use((req, res, next) => {
-      req.db = db;
-      next();
-    });
-
-    // Set up routes
-    app.use(express.static(path.join(__dirname, 'public')));
-    app.use(express.json());
-    app.use('/', routes);
-    
-
-    app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}`);
-    });
-  })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB:', err);
-  });
+app.listen(port, () => {
+  console.log(`Servidor Frontend iniciado na porta ${port}`);
+});

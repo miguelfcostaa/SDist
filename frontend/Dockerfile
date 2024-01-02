@@ -1,6 +1,6 @@
-FROM node:16
+FROM node:14
 
-WORKDIR /app/frontend
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 3000
 
-CMD [ "node", "app.js" ]
+CMD ["npm", "start"]

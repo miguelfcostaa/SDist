@@ -15,13 +15,13 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build Backend Docker image
-        run: docker build -t miguelfcosta/projeto-sdist-backend ./backend
+        run: docker build -t miguelfcosta/login-backend ./backend
   
       - name: Build Frontend Docker image
-        run: docker build -t miguelfcosta/projeto-sdist-frontend ./frontend
+        run: docker build -t miguelfcosta/login-frontend ./frontend
   
       - name: Push Backend Docker image to Docker Hub
-        run: docker push miguelfcosta/projeto-sdist-backend
+        run: docker push miguelfcosta/login-backend 
   
       - name: Push Frontend Docker image to Docker Hub
-        run: docker push miguelfcosta/projeto-sdist-frontend
+        run: docker push miguelfcosta/login-frontend

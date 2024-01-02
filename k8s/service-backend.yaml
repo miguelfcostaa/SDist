@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: projeto-sd-backend-deployment
+  namespace: sge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: projeto-sd-backend
+  template:
+    metadata:
+      labels:
+        app: projeto-sd-backend
+    spec:
+      containers:
+        - name: projeto-sd-backend
+          image: miguelfcosta/login-backend:latest 
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-backend-service
+  namespace: sge
+spec:
+  selector:
+    app: projeto-sd-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080 
+  type: ClusterIP
