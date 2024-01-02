@@ -28,10 +28,10 @@
     <script>
         async function login(event) {
             event.preventDefault(); // Evitar o comportamento padrão do formulário
-
+    
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-
+    
             try {
                 const response = await fetch('http://10.2.15.146:8008/api/login', {
                     method: 'POST',
@@ -40,11 +40,22 @@
                     },
                     body: JSON.stringify({ username, password }),
                 });
-
-                const data = await response.json();
-                console.log(data); // Você pode processar a resposta conforme necessário
-            } 
-            catch (error) {
+    
+                if (response.ok) {
+                    // Se a resposta do servidor for bem-sucedida
+                    const data = await response.json();
+                    console.log(data); // Você pode processar a resposta conforme necessário
+    
+                    // Redirecionar para a página de sucesso
+                    window.location.href = '/api/login-success';
+                } else {
+                    // Se a resposta do servidor indicar falha
+                    console.error('Login falhou:', response.statusText);
+    
+                    // Redirecionar para a página de falha
+                    window.location.href = '/api/login-fail';
+                }
+            } catch (error) {
                 console.error('Erro ao fazer login:', error);
             }
         }
