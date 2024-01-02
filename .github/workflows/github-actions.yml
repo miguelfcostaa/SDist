@@ -25,3 +25,19 @@ jobs:
   
       - name: Push Frontend Docker image to Docker Hub
         run: docker push miguelfcosta/login-frontend
+
+  deploy-to-k8s:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
+
+      - name: Apply backend deployment
+        run: kubectl apply -f k8s/service-backend.yaml -n sge
+
+      - name: Apply frontend deployment
+        run: kubectl apply -f k8s/service-frontend.yaml -n sge
