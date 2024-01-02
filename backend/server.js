@@ -28,7 +28,7 @@ const connectToMongoDB = async () => {
 };
 
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hello from Backend!');
 });
 
@@ -44,7 +44,8 @@ app.post('/api/login', async (req, res) => {
 
   if (user) {
     return res.json({ message: 'Login bem-sucedido' });
-  } else {
+  } 
+  else {
     return res.status(401).json({ message: 'Credenciais inválidas' });
   }
 });
