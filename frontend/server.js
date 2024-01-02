@@ -30,6 +30,7 @@ app.get('/api/login-success', (req, res) => {
   res.send('Login feito com sucesso!');
 });
 
+
 app.get('/api/login-fail', (req, res) => {
   res.send('Username ou password incorretos!');
 });
