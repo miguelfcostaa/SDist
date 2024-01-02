@@ -25,6 +25,12 @@ const connectToMongoDB = async () => {
   }
 };
 
+
+app.get('/', (req, res) => {
+  res.send('Hello from Backend!');
+});
+
+
 // Endpoint para login
 app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
