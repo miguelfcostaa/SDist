@@ -1,57 +1,31 @@
-import axiosInstance from './api';
-
 const express = require('express');
 const path = require('path');
+const cors = require('cors'); 
 
 const app = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
+
+app.use(cors());
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(port, () => {
-  console.log(`Frontend server is running on http://localhost:${port}`);
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 
-axiosInstance.get('/')
-  .then(response => {
-
-    console.log(response.data);
-  })
-  .catch(error => {
-
-    console.error(error);
-  });
-ddw
-
-axiosInstance.get('/login')
-  .then(response => {
-
-    console.log(response.data);
-  })
-  .catch(error => {
-
-    console.error(error);
-  });
+app.get('/create-account', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'register.html'));
+});
 
 
-axiosInstance.post('/create-account', { username: 'example', password: 'password' })
-  .then(response => {
-
-    console.log(response.data);
-  })
-  .catch(error => {
-
-    console.error(error);
-  });
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
 
 
-axiosInstance.post('/login', { username: 'example', password: 'password' })
-  .then(response => {
-    
-    console.log(response.data);
-  })
-  .catch(error => {
-
-    console.error(error);
-  });
+app.listen(port, () => {
+  console.log(`Servidor Frontend iniciado na porta ${port}`);
+});
