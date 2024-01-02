@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: projeto-sd-backend-deployment
+  name: sdist-login-backend-deployment
   namespace: sge
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: projeto-sd-backend
+      app: sdist-login-backend
   template:
     metadata:
       labels:
-        app: projeto-sd-backend
+        app: sdist-login-backend
     spec:
       containers:
-        - name: projeto-sd-backend
+        - name: sdist-login-backend
           image: miguelfcosta/login-backend:latest 
           ports:
             - containerPort: 8080
@@ -27,7 +27,7 @@ metadata:
   namespace: sge
 spec:
   selector:
-    app: projeto-sd-backend
+    app: sdist-login-backend
   ports:
     - protocol: TCP
       port: 80

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: projeto-sd-frontend-deployment
+  name: sdist-login-frontend-deployment
   namespace: sge
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: projeto-sd-frontend
+      app: sdist-login-frontend
   template:
     metadata:
       labels:
-        app: projeto-sd-frontend
+        app: sdist-login-frontend
     spec:
       containers:
-        - name: projeto-sd-frontend
+        - name: sdist-login-frontend
           image: miguelfcosta/login-frontend:latest  
           ports:
             - containerPort: 3000
@@ -26,7 +26,7 @@ metadata:
   namespace: sge
 spec:
   selector:
-    app: projeto-sd-frontend
+    app: sdist-login-frontend
   ports:
     - protocol: TCP
       port: 80
