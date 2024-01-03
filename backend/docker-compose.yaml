@@ -22,8 +22,18 @@ services:
       MONGODB_URL: mongodb+srv://miguelfcosta88:miguel1234@sdistdb.sbvckky.mongodb.net/
       DB_NAME: sdist_db
       NAME: Application
+      PROMETHEUS_URL: http://10.2.15.146:30973
     depends_on:
       - mongo_db
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus_container
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - ./SDist/k8s/prometheus.yml:/etc/prometheus/prometheus.yml:ro
 
 volumes:
   mongo_db: {}
